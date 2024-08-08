@@ -1,5 +1,7 @@
 #!/bin/bash
 
+prev=$PWD
+
 repos=$(find ~ -name ".git" | grep -v ".local" | grep -v ".cache")
 
 for repo in $repos; do
@@ -7,3 +9,5 @@ for repo in $repos; do
 	echo -e "\e[94mRepo\e[m:"$PWD
 	lazygit
 done
+
+cd $prev
