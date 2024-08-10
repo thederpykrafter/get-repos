@@ -41,10 +41,6 @@ for repo in $repos; do
       gh repo create $curr_repo -s . --push --public
     fi
 
-  # check if clean
-  elif git status | grep -w "nothing to commit, working tree clean" &> /dev/null; then
-    echo -e "\x1b[92mUp to date\x1b[m"
-
   # check for untracked files
   elif git status | grep -w "untracked files" &> /dev/null; then
     echo -e "\x1b[93mUntracked files\x1b[m"
@@ -58,7 +54,7 @@ for repo in $repos; do
 
   # check if pull needed
   elif git status | grep -w "git pull" &> /dev/null; then
-    echo -e "\x1b[94mFiles need to be pulled from remoote\x1b[m"
+    echo -e "\x1b[94mFiles need to be pulled from remote\x1b[m"
 
     echo -e "Open \x1b[95mlazygit\x1b[m? [Yy/Nn*]"
     read -n 1 -r -s
@@ -77,6 +73,10 @@ for repo in $repos; do
     then
       lazygit
     fi
+  
+  # check if clean
+  else
+    echo -e "\x1b[92mUp to date\x1b[m"
   fi
 done
 
