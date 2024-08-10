@@ -15,17 +15,17 @@ for repo in $repos; do
 	branch=$(git branch --show-current)
 	
 	cd $repo
-  git remote update
+	git remote update
 
 	echo -e "\e[94mFound repo:\e[m "$curr_repo
 	# do stuff here
 	if [ ! $(git status --porcelain | wc -l) -eq "0" ]; then
-    echo -e "\x1b[93mchanged files: \x1b[m"
+		echo -e "\x1b[93mchanged files: \x1b[m"
 		git status --porcelain
-  fi
+	fi
 
-  echo -n "push/pull: "
-  git rev-list HEAD...origin/main --count 2> /dev/null || git rev-list HEAD...origin/master --count
+	echo -n "push/pull: "
+	git rev-list HEAD...origin/main --count 2> /dev/null || git rev-list HEAD...origin/master --count
 done
 
 cd $prev
