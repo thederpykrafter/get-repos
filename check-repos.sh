@@ -15,7 +15,7 @@ for repo in $repos; do
 	branch=$(git branch --show-current)
 	
 	cd $repo
-	git remote update
+	git remote update &> /dev/null
 
 	echo -e "\e[94mFound repo:\e[m "$curr_repo
 	# do stuff here
