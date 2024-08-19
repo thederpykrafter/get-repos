@@ -41,8 +41,19 @@ for repo in $repos; do
       gh repo create $curr_repo -s . --push --public
     fi
 
+  # check for unstaged files
+  elif git status | grep -w "Changes not staged" &> /dev/null; then
+    echo -e "\x1b[93mUnstaged changes\x1b[m"
+
+    echo -e "Open \x1b[95mlazygit\x1b[m? [Yy/Nn*]"
+    read -n 1 -r -s
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+      lazygit
+    fi
+
   # check for untracked files
-  elif git status | grep -w "untracked files" &> /dev/null; then
+  elif git status | grep -w "Untracked files" &> /dev/null; then
     echo -e "\x1b[93mUntracked files\x1b[m"
 
     echo -e "Open \x1b[95mlazygit\x1b[m? [Yy/Nn*]"
