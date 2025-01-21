@@ -11,7 +11,7 @@ for repo in $repos; do
 
   curr_repo=$(echo $repo \
       | sed "s/\/data\/data\/com.termux\/files\/home\///" \
-    | sed "s/\/home\/thederpykrafter\///")
+    | sed "s/\/home\/$USER\///")
 
   echo -e "\e[94mRepo\e[m:"$curr_repo
 
