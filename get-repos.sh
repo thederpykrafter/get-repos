@@ -3,8 +3,7 @@
 prev=$PWD
 
 repos=$(find ~ -name ".git" \
-    | grep -v ".local" \
-    | grep -v ".cache" \
+    | grep -Ev "(.local|.cache)" \
   | sed "s/\.git//g")
 
 for repo in $repos; do
