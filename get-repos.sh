@@ -75,15 +75,7 @@ for repo in $repos; do
 
     # check if pull needed
   elif git status | grep -w "git pull" &> /dev/null; then
-    echo -e "\x1b[94mFiles need to be pulled from remote\x1b[m"
-
-    echo -e "Open \x1b[95mlazygit\x1b[m? [y/n*]"
-    read -n 1 -r -s
-    if [[ $REPLY =~ ^[y]$ ]]
-    then
-      git pull
-    fi
-
+    git pull && echo -e "\x1b[94mFiles pulled from remote\x1b[m"
     # check if clean
   else
     echo -e "\x1b[92mUp to date\x1b[m"
