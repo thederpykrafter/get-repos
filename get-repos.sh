@@ -81,7 +81,7 @@ for repo in $repos; do
     read -n 1 -r -s
     if [[ $REPLY =~ ^[y]$ ]]
     then
-      lazygit
+      git pull
     fi
 
     # check if clean
