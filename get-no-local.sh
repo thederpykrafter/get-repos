@@ -13,7 +13,7 @@ function getRemoteRepos() {
 }
 # comm -23 <(getRemoteRepos | sort) <(getAllRepos | sort)
 
-for repo in `getRemoteRepos`; do
+for repo in $(getRemoteRepos); do
   if findRepo $repo &> /dev/null; then
     # echo "Found: $repo"
     echo -n
